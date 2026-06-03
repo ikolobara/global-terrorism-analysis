@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analiza terorističkih napada</title>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <div class="title">TERORISTIČKI NAPADI</div>
+
+            <div class="filter-group">
+
+                <label>Animacija kroz godine</label>
+
+                <button id="playBtn" class="btn">▶ Play</button>
+
+                <input type="range" id="yearSlider" min="0" step="1" style="width:100%; margin-top:10px;" />
+            </div>
+
+            <div class="filter-group">
+                <label>Godina</label>
+                <select id="yearFilter"></select>
+            </div>
+
+            <div class="filter-group">
+                <label>Regija</label>
+                <select id="regionFilter"></select>
+            </div>
+
+            <div class="filter-group">
+                <label>Vrsta napada</label>
+                <select id="attackFilter"></select>
+            </div>
+
+            <button class="btn" onclick="applyFilters()">Primijeni filtere</button>
+
+            
+        </div>
+
+        <!-- MAIN -->
+        <div class="main">
+
+            <div class="cards">
+                <div class="card">
+                    <h3>NAPADI</h3>
+                    <p id="totalAttacks">0</p>
+                </div>
+
+                <div class="card">
+                    <h3>POGINULI</h3>
+                    <p id="totalKilled">0</p>
+                </div>
+
+                <div class="card">
+                    <h3>OZLIJEĐENI</h3>
+                    <p id="totalWounded">0</p>
+                </div>
+
+                <div class="card">
+                    <h3>DRŽAVE</h3>
+                    <p id="totalCountries">0</p>
+                </div>
+            </div>
+
+            <!-- MAP -->
+            <div class="panel">
+                <div class="panel-title">Karta svijeta</div>
+                <div id="map"></div>
+            </div>
+
+            <!-- CHARTS -->
+            <div class="grid-2">
+
+                <div class="panel">
+                    <div class="panel-title">Napadi kroz godine</div>
+                    <svg id="lineChart" height="300"></svg>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-title">Top države</div>
+                    <svg id="barChart" height="300"></svg>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-title">Vrste napada</div>
+                    <svg id="pieChart" height="300"></svg>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-title">Organizacije</div>
+                    <svg id="orgChart" height="300"></svg>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="tooltip" id="tooltip"></div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
